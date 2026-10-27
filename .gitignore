@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+.dotnet-home/
+.nuget-packages/
+NuGet.Offline.Config
+*.user
+*.suo
