@@ -15,19 +15,27 @@ TopMask places a black, always-on-top window along the top of a selected display
 ## Requirements
 
 - Windows 10 or Windows 11, x64.
-- [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) to run the published application, or the .NET 10 SDK to build it.
+- No separate .NET installation is needed for the self-contained release package.
 
-## Build and run
+## Download and run
 
-In PowerShell, from the project directory:
+Download `TopMask-AppBar-win-x64.zip` from the [Releases page](https://github.com/knowlet/TopMask-AppBar/releases), extract it, and run `TopMaskAppBar.exe`.
+
+The current interface is in Traditional Chinese. Select the target display, enter the height in pixels, and click the left button to enable the mask. Click the right button to stop it and restore the work area, or close the application. The built-in display is selected automatically when it can be identified.
+
+## Build from source
+
+Install the [.NET 10 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/10.0), then run the following in PowerShell from the project directory:
 
 ```powershell
 dotnet publish .\TopMaskAppBar.csproj -c Release -r win-x64 --self-contained false
 ```
 
-Run `TopMaskAppBar.exe` from `bin\Release\net10.0-windows\win-x64\publish\`. Keep the executable and the other files in that directory together.
+Run `TopMaskAppBar.exe` from `bin\Release\net10.0-windows\win-x64\publish\`. Keep the executable and the other files in that directory together. This framework-dependent build requires the .NET 10 Desktop Runtime on the computer running it.
 
-The current interface is in Traditional Chinese. Select the target display, enter the height in pixels, and click the left button to enable the mask. Click the right button to stop it and restore the work area, or close the application. The built-in display is selected automatically when it can be identified.
+## CI and releases
+
+Pushes to `develop` and pull requests build a Windows x64 package and upload it as a workflow artifact. Pushing a version tag such as `v1.0.0` also publishes that self-contained package to GitHub Releases. The workflow can also be run manually to produce an artifact.
 
 ## Notes
 
